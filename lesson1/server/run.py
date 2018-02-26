@@ -49,4 +49,5 @@ while 1:
 	except KeyboardInterrupt:  												#if ctrl + C
 		print 'Stopped'
 		server_socket.close()  												#stop listening
+		server_socket.close()  												#stop listening
 		exit()
