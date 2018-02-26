@@ -15,7 +15,7 @@ def get_response(request):
         return 'HTTP/1.1 200 OK\n\n Hello mister! \n You are: ' + agent     #response 
     elif avm=='/test/' or avm=='/test':                                     #check for eq
         return 'HTTP/1.1 200 OK \n\n' + request                             #returning request
-    elif avm=='/media/' or avm=='/media':                                  #check for eq
+    elif avm=='/media/' or avm=='/media':                                   #check for eq
         fls=['<a href="'+i+'">'+i+'</a><br/>' for i in listdir('../files/')]#list of files in /files/ with links
         return 'HTTP/1.1 200 OK\n\n'+'\n'.join(fls)                         #returning response and list of files
     elif avm[:7]=='/media/' and avm!='/media/':                             #check if it's smth in media
