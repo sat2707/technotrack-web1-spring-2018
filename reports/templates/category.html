@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    {{ category.name }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ category.name }}</h1>
+    <div class="row">
+        <div class="col col-md-3">
+            <ul class="list-group">
+                {% for report in reports %}
+                    <li class="list-group-item"><a href="{% url 'reports:report' report.id %}">{{ report.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% crispy form %}
+{% endblock %}

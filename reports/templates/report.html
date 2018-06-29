@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    {{ report.name }}[{{ report.id }}
+{% endblock %}
+{% block content %}
+    <h3><a href="{% url 'reports:category' report.category_id %}">{{ report.category.name }}</a></h3>
+    <h1>{{ report.name }}[{{ report.id }}]</h1>
+    <h2>{{ report.status.status }}</h2>
+    <h3>{{ report.time }}</h3>
+    <h3>Assigned to:
+    {% for user in user_to %}
+        <h4> {{ user.username }} </h4> - <h4> {{ user.position }} </h4>
+    {% endfor %}
+    </h3>
+
+    </br>
+    {% for label in labels %}
+        <h4> {{ label.label }} </h4>
+    {% endfor %}
+    Creator: <i>{{ report.created_by.username }} {{ report.creted_by.position }}</i>-level: {{ report.level }} - priority: {{ report.priority }}<br/>
+    <p>{{ report.text }}</p></br></br></br>
+    <div class="row">
+        <div class="col col-md-3">
+            <ul class="list-group">
+                {% for answer in answers %}
+                    <li class="list-group-item">
+                        <h4> {{ answer.created_by.username }} </h4>
+                        <h5>{{ answer.created_by.position }}</h5>
+                        <i>{{ answer.time }}</i>
+                        {{ answer.text }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% crispy form %}
+{% endblock %}

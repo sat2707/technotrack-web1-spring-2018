@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+    {% for user in users %}
+        <a href="{% url  'users:user' user.id %}">{{ user.username }}</a> - {{ user.position }}<br/>
+    {% endfor %}
+</body>
+</html>
